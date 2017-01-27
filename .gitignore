@@ -1,0 +1,20 @@
+.DS_Store
+.gradle
+build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+.idea/
+*.iml
+*.iws
+*.ipr
+logs/
+
+drivers/*
+screenshots/*
+
+!.gitkeep

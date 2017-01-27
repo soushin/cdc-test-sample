@@ -1,0 +1,30 @@
+{
+	"consumer": {
+		"name": "consumer_user_client"
+	},
+	"provider": {
+		"name": "provider_user_client"
+	},
+	"interactions": [
+		{
+			"provider_state": "fetch user by id 1192",
+			"description": "get request for user with id 1192",
+			"request": {
+				"method": "GET",
+				"path": "/user/1192"
+			},
+			"response": {
+				"body": {
+					"Name": "1192-User"
+				},
+				"headers": {
+					"Content-Type": "application/json"
+				},
+				"status": 200
+			}
+		}
+	],
+	"metaData": {
+		"pactSpecificationVersion": "1.1.0"
+	}
+}
