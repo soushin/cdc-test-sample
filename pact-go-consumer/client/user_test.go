@@ -9,7 +9,7 @@ import (
 
 func buildPact() pact.Builder {
 	return pact.
-	NewConsumerPactBuilder(&pact.BuilderConfig{PactPath: "../../pacts"}).
+		NewConsumerPactBuilder(&pact.BuilderConfig{PactPath: "../../pacts"}).
 		ServiceConsumer("consumer_user_client").
 		HasPactWith("provider_user_client")
 }
