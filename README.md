@@ -4,12 +4,12 @@ This project contains demo of using ['Consumer Driven Contract testing'](https:/
 
 ## Microservice, consumer side
 Consumer side is made by golang, then Pact framework using ['SEEK-Jobs/pact-go'](https://github.com/seek-jobs/pact-go) library.
-If you how to use or haw to make pact file, please see 'SEEK-Jobs/pact-go' page.
+If you how to use or haw to make pact file, have to see 'SEEK-Jobs/pact-go' page.
 
 ## Microservice, provider side
 Provider side is made by kotlin and spring-boot-framework, then Pact framework using ['DiUS/pact-jvm'](https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-provider-junit) library.
-If you how to use or haw to make pact file, please see 'DiUS/pact-jvm' page.
+If you how to use or haw to make pact file, have to see 'DiUS/pact-jvm' page.
 
 ## Additional Reports
-[this post](http://naruto-io.hatenablog.com/) reported how to build this project, sorry that supported only japanese.
+[This post](http://naruto-io.hatenablog.com/entry/2017/01/28/215229) reported how to build this project, sorry that supported only japanese.
 I hope to this project helps to your cdc-test.
