@@ -1,14 +1,14 @@
 {
 	"consumer": {
-		"name": "consumer_user_client"
+		"name": "gateway_service"
 	},
 	"provider": {
-		"name": "provider_user_client"
+		"name": "user_service"
 	},
 	"interactions": [
 		{
-			"provider_state": "fetch user by id 1192",
-			"description": "get request for user with id 1192",
+			"provider_state": "there is a user named 1192-User",
+			"description": "a get request for a user",
 			"request": {
 				"method": "GET",
 				"path": "/user/1192"

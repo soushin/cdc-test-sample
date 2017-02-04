@@ -10,8 +10,8 @@ import (
 func buildPact() pact.Builder {
 	return pact.
 		NewConsumerPactBuilder(&pact.BuilderConfig{PactPath: "../../pacts"}).
-		ServiceConsumer("consumer_user_client").
-		HasPactWith("provider_user_client")
+		ServiceConsumer("gateway_service").
+		HasPactWith("user_service")
 }
 
 func Test_ContractUserClientProvider_StatusIsOk(t *testing.T) {
@@ -25,8 +25,8 @@ func Test_ContractUserClientProvider_StatusIsOk(t *testing.T) {
 	response := provider.NewJSONResponse(200, header)
 	response.SetBody(`{"Name": "1192-User"}`)
 
-	if err := ms.Given("fetch user by id 1192").
-		UponReceiving("get request for user with id 1192").
+	if err := ms.Given("there is a user named 1192-User").
+		UponReceiving("a get request for a user").
 		With(*request).
 		WillRespondWith(*response); err != nil {
 		t.Error(err)

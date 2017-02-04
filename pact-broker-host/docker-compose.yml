@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: pact_broker_postgres
+    build: ./container/postgres
+    ports:
+      - 3306:3306
+
+  pact_broker:
+    container_name: pact_broker
+    build: ./container/pact-broker
+    ports:
+      - 80:80
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    environment:
+      PACT_BROKER_DATABASE_USERNAME: pact_broker
+      PACT_BROKER_DATABASE_PASSWORD: pact_broker
+      PACT_BROKER_DATABASE_HOST: postgres
+      PACT_BROKER_DATABASE_USERNAME: pact_broker
+      PACT_BROKER_DATABASE_NAME: pact_broker
+
+  mackerel_agent:
+    container_name: mackerel_agent
+    build: ./container/mackerel-agent
+    depends_on:
+      - postgres
+      - pact_broker
+    links:
+      - postgres
+      - pact_broker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/mackerel-agent/:/var/lib/mackerel-agent/
+    environment:
+      MACKEREL_API_KEY: {ENV_MACKEREL_API_KEY}

@@ -1,16 +1,13 @@
 package pact_kotlin_provider
 
+import au.com.dius.pact.provider.junit.Consumer
 import au.com.dius.pact.provider.junit.PactRunner
 import au.com.dius.pact.provider.junit.Provider
-import au.com.dius.pact.provider.junit.loader.PactFolder
 import au.com.dius.pact.provider.junit.State
+import au.com.dius.pact.provider.junit.loader.PactBroker
 import au.com.dius.pact.provider.junit.target.HttpTarget
 import au.com.dius.pact.provider.junit.target.TestTarget
 import au.com.dius.pact.provider.junit.target.Target
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import com.github.restdriver.clientdriver.ClientDriverRule
-import com.github.restdriver.clientdriver.RestClientDriver.*
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
 import org.junit.Before
@@ -26,8 +23,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
  */
 
 @RunWith(PactRunner::class)
-@Provider("provider_user_client")
-@PactFolder("pacts")
+@Provider("user_service")
+@Consumer("gateway_service")
+//@PactFolder("pacts")
+@PactBroker(host = "localhost", port = "8080", tags = arrayOf("latest"))
 @WebAppConfiguration
 open class ContractUserTest {
 
@@ -36,7 +35,7 @@ open class ContractUserTest {
     companion object {
 
         // mock port
-        private val port = 8080
+        private val port = 8081
 
         @TestTarget
         lateinit var target: Target
@@ -53,7 +52,7 @@ open class ContractUserTest {
         WireMock.configureFor(port)
     }
 
-    @State("fetch user by id 1192")
+    @State("there is a user named 1192-User")
     open fun toDefaultState() {
 
         val path = "/user/1192"

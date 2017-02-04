@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  dind_pact:
+    container_name: pact_container
+    image: docker:1.13.0-dind
+    privileged: true
+    ports:
+      - 5301:2375
+      - 8080:80
