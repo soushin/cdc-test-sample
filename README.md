@@ -17,6 +17,7 @@ You can set up using following steps.
 requirements
 * ['dind'](https://hub.docker.com/_/docker/)
 * ['direnv'](https://github.com/direnv/direnv)
+* ['mackerel'](https://mackerel.io/)
 
 **1:setup**
 ```
